@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% block content %}
+<hr />
+<div style="text-align: center;">
+	<a href = "https://www.drchrono.com/o/authorize?client_id={{CLIENT_ID}}&response_type=code">
+			<button> Sign In with DRCHRONO </button></a><br/>
+</div>
+{% endblock %}

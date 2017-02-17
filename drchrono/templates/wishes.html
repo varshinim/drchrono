@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load extras %}
+{% load staticfiles %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<h2 class="text-center">
+    <i class="fa fa-xl fa-birthday-cake"></i>
+    Today's Birthdays
+</h2>
+<hr />
+{% if not patients %}
+    No birthdays today...
+{% endif %}
+{% for patient in patients %}
+<div class="patient-info text-center">
+    <div class="patient-name">
+      <span class="name">
+          {{ patient.first_name }} {{patient.last_name}}
+      </span>
+    </div>
+    {% if patient.date_of_birth %}
+    <div class="patient-age">
+      <span class="dob">
+          {{ patient.date_of_birth | age }} years old
+      </span>
+    </div>
+    {% endif %}
+    <div class="contact-info">
+    {% if patient.home_phone %}
+    <div class="patient-home-phone">
+      Home Phone: 
+        <span class="home-phone">
+            <i class="fa fa-phone"></i>
+            {{ patient.home_phone }}
+        </span>
+    </div>
+    {% endif %}
+    {% if patient.cell_phone %}
+    <div class="patient-cell-phone">
+      Cell Phone: 
+        <span class="cell-phone">
+            <i class="fa fa-mobile"></i>
+            {{ patient.cell_phone }}
+        </span>
+    </div>
+    {% endif %}
+    {% if patient.email %}
+    <div class="patient-email">
+       Email: 
+        <span class="email">
+            <i class="fa fa-envelope"></i>
+            {{ patient.email }}
+        </span>
+    </div>
+    {% endif %}
+        <hr />
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
